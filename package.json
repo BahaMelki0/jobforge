@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "jsdom": "^30.1.1",
+    "prettier": "^3.9.9"
+  },
+  "private": true,
+  "scripts": {
+    "test:ui": "node tests/ui.cjs",
+    "format:check": "prettier --check app/static/*.js app/static/*.css app/templates/index.html tests/ui.cjs"
+  }
+}

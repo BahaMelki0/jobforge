@@ -1,0 +1,13 @@
+services:
+  jobforge:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./runtime:/app/runtime
+      - ./generated_applications:/app/generated_applications
+    environment:
+      JOBFORGE_DB_URL: sqlite:////app/runtime/jobforge.db
+    restart: unless-stopped

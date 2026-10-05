@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JobForge &mdash; Your next move</title>
+    <meta name="theme-color" content="#0b1118" />
+    <link rel="icon" type="image/svg+xml" href="/static/jobforge-mark.svg" />
+    <link rel="stylesheet" href="/static/app.css" />
+    <link rel="stylesheet" href="/static/design-system.css" />
+    <link rel="stylesheet" href="/static/obsidian.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="JobForge home"
+        ><img class="brand-logo" src="/static/jobforge-logo.svg" alt="JobForge"
+      /></a>
+      <div class="workspace-label">PERSONAL WORKSPACE</div>
+      <nav>
+        <button class="tab active" data-tab="jobs">
+          <span>&#8981;</span>Discover jobs</button
+        ><button class="tab" data-tab="ai">
+          <span>&#10022;</span>Local AI studio</button
+        ><button class="tab" data-tab="sources">
+          <span>&#9673;</span>Live sources</button
+        ><button class="tab" data-tab="applications">
+          <span>&#9636;</span>Applications</button
+        ><button class="tab" data-tab="profile">
+          <span>&#9678;</span>My profile
+        </button>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span> LOCAL-FIRST WORKSPACE
+        <p>Your profile. Your models.<br />Your next opportunity.</p>
+        <div id="health">Connecting to local AI&hellip;</div>
+      </div>
+      <div class="user-card">
+        <div class="avatar">BM</div>
+        <div>
+          <strong>Bahaeddine Melki</strong
+          ><small>Cybersecurity &middot; France</small>
+        </div>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header>
+        <div>
+          <span class="breadcrumb">Workspace</span><span class="slash">/</span
+          ><span id="page-name">Discover jobs</span>
+        </div>
+        <span class="top-tag"
+          >FRANCE <span> / </span> JUNIOR IT &amp; SECURITY</span
+        >
+      </header>
+      <main>
+        <div
+          id="ai-activity"
+          class="ai-activity"
+          aria-live="polite"
+          hidden
+        ></div>
+        <section id="tab-jobs" class="panel active">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">MAKE YOUR NEXT MOVE</div>
+              <h1>Your junior IT &amp; security shortlist<span>.</span></h1>
+              <p>
+                France-based roles in security, SOC, networking and IT support.
+                Junior roles come first. Closed or expired offers are removed;
+                uncertain application status is clearly flagged for checking.
+              </p>
+            </div>
+            <button id="refresh-all" class="primary">
+              &#8635; &nbsp; Scan live sources
+            </button>
+          </div>
+          <div class="scan-strip">
+            <div class="scan-icon" id="scan-icon">&#8635;</div>
+            <div class="scan-copy">
+              <strong id="scan-title">Checking discovery status</strong
+              ><span id="scan-subtitle"
+                >Startup scan + every two hours while the app runs.</span
+              >
+            </div>
+            <span class="tag" id="scan-timing">Automatic discovery</span>
+          </div>
+          <div id="job-stats" class="stats"></div>
+          <div class="section-heading">
+            <h2>Your opportunities <span id="result-count"></span></h2>
+            <button class="text-button" id="open-import">
+              + Import a listing
+            </button>
+          </div>
+          <div class="toolbar">
+            <div class="search-wrap">
+              <span>&#8981;</span
+              ><input
+                id="job-search"
+                placeholder="Search role, company or keyword&hellip;"
+              />
+            </div>
+            <select id="job-category">
+              <option value="">All specialties</option></select
+            ><select id="job-source">
+              <option value="">All sources</option></select
+            ><select id="min-score">
+              <option value="0">Any match score</option>
+              <option value="60">60+ match</option>
+              <option value="75">75+ match</option>
+              <option value="85">85+ match</option></select
+            ><button id="rank-all" class="secondary">Re-rank</button>
+          </div>
+          <div class="result-controls">
+            <label
+              >Application status<select id="job-application-status">
+                <option value="">Open + needs checking</option>
+                <option value="open">Confirmed open</option>
+                <option value="unknown">Needs checking</option>
+              </select></label
+            >
+            <label
+              >Career focus<select id="job-focus">
+                <option value="junior_france">
+                  France / Junior (0-2 years)
+                </option>
+                <option value="review">Needs verification</option>
+                <option value="training">Internships / apprenticeships</option>
+                <option value="excluded">Outside my focus</option>
+                <option value="">All collected roles</option>
+              </select></label
+            ><label
+              >Listing completeness<select id="job-readiness">
+                <option value="full">Full descriptions</option>
+                <option value="summary">Summaries</option>
+                <option value="link_only">Discovered links</option>
+                <option value="">All listings</option>
+              </select></label
+            ><label
+              >Sort by<select id="job-sort">
+                <option value="match">Best match</option>
+                <option value="newest">Newest posting</option>
+              </select></label
+            ><span class="muted"
+              >Unknown posting dates appear last when sorted by date.</span
+            >
+          </div>
+          <div id="jobs" class="job-grid">
+            <div class="empty">Loading your workspace&hellip;</div>
+          </div>
+          <div id="pagination" class="pagination"></div>
+        </section>
+        <section id="tab-sources" class="panel">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">DISCOVERY ENGINE</div>
+              <h1>A wider search. A better fit.</h1>
+              <p>Connect public company feeds and watch each collection run.</p>
+            </div>
+            <button class="primary" id="scan-sources">&#8635; Scan now</button>
+          </div>
+          <details class="source-disclosure">
+            <summary>Browse available sources</summary>
+            <div id="source-catalog" class="catalog"></div>
+          </details>
+          <div class="notice">
+            <strong>Source coverage is visible, not assumed</strong>
+            <p>
+              LinkedIn, APEC, WTTJ and CyberSecurityJobsite now have automatic
+              collectors. Access varies: blocked descriptions are labelled as
+              summaries or unverified links. Scan history shows page counts,
+              filters, limits and access warnings.
+            </p>
+            <button class="text-button" id="source-import">
+              Import listing &rarr;
+            </button>
+          </div>
+          <div class="split">
+            <div>
+              <h2>Connected sources</h2>
+              <div id="sources"></div>
+              <h2 class="spaced">Recent scans</h2>
+              <div id="scan-history"></div>
+            </div>
+            <form id="source-form" class="card form-card">
+              <div class="eyebrow">EXPAND YOUR SEARCH</div>
+              <h3>Connect a custom source</h3>
+              <label
+                >Name<input
+                  name="name"
+                  required
+                  placeholder="Company careers" /></label
+              ><label
+                >Source type<select name="kind">
+                  <option value="linkedin">LinkedIn public jobs</option>
+                  <option value="apec">APEC</option>
+                  <option value="wttj">WTTJ sitemap discovery</option>
+                  <option value="cybersecurityjobsite">
+                    CyberSecurityJobsite
+                  </option>
+                  <option value="greenhouse">Greenhouse</option>
+                  <option value="lever">Lever</option>
+                  <option value="smartrecruiters">SmartRecruiters</option>
+                  <option value="rss">RSS feed</option>
+                  <option value="jsonld">JobPosting page</option>
+                </select></label
+              ><label
+                >Configuration<textarea name="config" rows="6">
+{"board_token":"company","company":"Company"}</textarea>
+              </label>
+              <p class="muted">
+                Greenhouse: board_token &middot; Lever: site &middot;
+                SmartRecruiters: company_identifier &middot; RSS/JobPosting:
+                url.
+              </p>
+              <button class="primary" type="submit">Connect source</button>
+            </form>
+          </div>
+        </section>
+        <section id="tab-profile" class="panel">
+          <form id="profile-form" class="card profile-form">
+            <h2>Candidate profile</h2>
+            <p class="muted">
+              This profile drives ranking and application generation. Enter
+              skills and preferences one per line. Keep your experience factual:
+              the AI uses these details in every draft.
+            </p>
+            <label>Name <input name="name" /></label>
+            <label>Headline <input name="headline" /></label>
+            <label>Summary <textarea name="summary" rows="5"></textarea></label>
+            <div class="two-col">
+              <label
+                >Preferred locations<textarea
+                  name="preferred_locations"
+                  rows="5"
+                ></textarea>
+              </label>
+              <label
+                >Categories + weights<textarea
+                  name="categories"
+                  rows="5"
+                ></textarea>
+              </label>
+              <label>Skills<textarea name="skills" rows="8"></textarea></label>
+              <label
+                >Must-have keywords<textarea
+                  name="must_have_keywords"
+                  rows="8"
+                ></textarea>
+              </label>
+              <label
+                >Nice-to-have keywords<textarea
+                  name="nice_to_have_keywords"
+                  rows="6"
+                ></textarea>
+              </label>
+              <label
+                >Exclude keywords<textarea
+                  name="exclude_keywords"
+                  rows="6"
+                ></textarea>
+              </label>
+              <label
+                >Target seniority<textarea
+                  name="target_seniority"
+                  rows="5"
+                ></textarea>
+              </label>
+              <label
+                >Preferred employment<textarea
+                  name="preferred_employment"
+                  rows="5"
+                ></textarea>
+              </label>
+              <label
+                >Languages<textarea name="languages" rows="5"></textarea>
+              </label>
+              <label
+                >Education<textarea name="education" rows="8"></textarea>
+              </label>
+              <label
+                >Experience<textarea name="experience" rows="10"></textarea>
+              </label>
+              <label
+                >Projects<textarea name="projects" rows="10"></textarea>
+              </label>
+              <label
+                >Certifications<textarea
+                  name="certifications"
+                  rows="6"
+                ></textarea>
+              </label>
+            </div>
+            <label
+              >Additional resume text<textarea
+                name="resume_text"
+                rows="8"
+              ></textarea>
+            </label>
+            <button type="submit">Save profile</button>
+          </form>
+        </section>
+
+        <section id="tab-ai" class="panel">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">YOUR PRIVATE WRITING PARTNER</div>
+              <h1>Better introductions. Still your voice.</h1>
+              <p>
+                Draft, refine and prepare with a model running on this laptop.
+              </p>
+            </div>
+            <div class="actions">
+              <button
+                class="primary"
+                id="prepare-model"
+                onclick="prepareModel()"
+              >
+                Prepare model</button
+              ><button class="secondary" onclick="health()">Check model</button>
+            </div>
+          </div>
+          <div class="model-card" id="ai-model-status"></div>
+          <div class="ai-workflow">
+            <div>
+              <span>01</span>
+              <h3>Choose an opportunity</h3>
+              <p>Your France junior shortlist keeps the search focused.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <h3>Write from real evidence</h3>
+              <p>Pick a message, email or complete application package.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <h3>Make it yours</h3>
+              <p>Edit, save versions and copy when you are ready.</p>
+            </div>
+          </div>
+          <div class="section-heading">
+            <h2>Recent AI work</h2>
+            <span class="muted">Progress and saved results</span>
+          </div>
+          <div id="ai-task-history"></div>
+        </section>
+        <section id="tab-applications" class="panel">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow">KEEP MOVING FORWARD</div>
+              <h1>Your application pipeline.</h1>
+              <p>Packages, conversations and every step that follows.</p>
+            </div>
+          </div>
+          <div id="applications"></div>
+        </section>
+      </main>
+      <footer>
+        Built around your experience.
+        <span>AI drafts always stay yours to review.</span>
+      </footer>
+    </div>
+    <dialog id="job-dialog">
+      <button class="close" aria-label="Close job">&times;</button>
+      <div id="job-detail"></div>
+    </dialog>
+    <dialog id="import-dialog">
+      <button class="close" aria-label="Close import">&times;</button>
+      <div class="eyebrow">BRING YOUR OWN OPPORTUNITY</div>
+      <h2>Import a job listing</h2>
+      <p class="muted">
+        Paste a listing from LinkedIn, WTTJ, a career page or an email alert. It
+        joins the same ranking and drafting workflow.
+      </p>
+      <form id="import-form">
+        <div class="two-col">
+          <label>Role<input name="title" required /></label
+          ><label>Company<input name="company" required /></label>
+        </div>
+        <div class="two-col">
+          <label
+            >Location<input name="location" value="France" required /></label
+          ><label>Original listing URL<input name="url" type="url" /></label>
+        </div>
+        <label
+          >Posting date (leave blank if unknown)<input
+            name="published_at"
+            type="date" /></label
+        ><label
+          >Job description<textarea
+            name="description"
+            rows="12"
+            minlength="50"
+            required
+          ></textarea></label
+        ><button type="submit" class="primary">Import & rank</button>
+      </form>
+    </dialog>
+    <div id="toast" role="status"></div>
+    <dialog id="followup-dialog" aria-labelledby="followup-title">
+      <button type="button" class="close" aria-label="Close">&times;</button>
+      <h2 id="followup-title">Follow-up and interview notes</h2>
+      <form id="followup-form">
+        <input type="hidden" name="application_id" /><label
+          >Follow-up date<input name="followup_date" type="date" /></label
+        ><label
+          >Interview notes, next steps or outcome<textarea
+            name="notes"
+            rows="8"
+            maxlength="10000"
+          ></textarea></label
+        ><button class="primary" type="submit">Save notes</button>
+      </form>
+    </dialog>
+    <dialog id="provenance-dialog" aria-labelledby="provenance-title">
+      <button type="button" class="close" aria-label="Close">&times;</button>
+      <h2 id="provenance-title">Source observations</h2>
+      <div id="provenance-content"></div>
+      <p class="muted">
+        Observation time records collection; source availability can change
+        between scans.
+      </p>
+    </dialog>
+    <script defer src="/static/app.js"></script>
+    <script defer src="/static/studio.js"></script>
+    <script defer src="/static/profile.js"></script>
+  </body>
+</html>

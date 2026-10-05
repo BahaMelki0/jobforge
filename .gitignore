@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.log
+__pycache__/
+.pytest_cache/
+.venv/
+generated_applications/
+runtime/
+.DS_Store
+
+node_modules/

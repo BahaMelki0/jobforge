@@ -1,0 +1,25 @@
+JobForge validation report
+==========================
+
+Automated test suite:
+- 68 tests passed (October 5, 2026 implementation pass)
+- Ranking logic tested
+- Fingerprint/deduplication stability tested
+- FastAPI health/profile/demo flow tested
+- End-to-end application package generation tested, including PDF outputs
+
+Historical synthetic demo pipeline check:
+- Demo source fetched: 4 jobs
+- Ingestion created: 4 normalized jobs
+- All jobs ranked successfully
+- Explicit provider none uses template generation; failed AI requests report errors.
+
+Command used:
+    pytest -q
+
+Expected result:
+    68 passed
+
+UI checks: npm run test:ui
+Formatting: npm run format:check
+Both passed. Browser visual review and live source coverage remain manual gates.

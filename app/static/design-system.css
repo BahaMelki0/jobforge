@@ -1,0 +1,532 @@
+/* Obsidian Signal shared project tokens and JobForge surfaces. */
+:root {
+  color-scheme: dark;
+  --brand-bg: #090a0d;
+  --brand-surface: #111318;
+  --brand-elevated: #191c22;
+  --brand-border: #2b3039;
+  --brand-text: #f0f1f3;
+  --brand-muted: #9a9faa;
+  --brand-accent: #f04452;
+  --brand-accent-hover: #ff6670;
+  --brand-info: #8abcf0;
+  --brand-warning: #e9bd62;
+  --brand-critical: #f1777d;
+  --brand-success: #65d39b;
+  --brand-sans: Inter, "Segoe UI", system-ui, sans-serif;
+  --brand-mono: "IBM Plex Mono", Consolas, monospace;
+  --bg: var(--brand-bg);
+  --ink: var(--brand-text);
+  --muted: var(--brand-muted);
+  --line: var(--brand-border);
+  --accent: var(--brand-accent);
+  --soft: #32171c;
+}
+
+body {
+  color-scheme: dark;
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  font-family: var(--brand-sans);
+}
+
+.sidebar {
+  background: linear-gradient(160deg, #111318, #090a0d);
+  color: var(--brand-text);
+  border-right: 1px solid var(--brand-border);
+}
+.brand {
+  color: var(--brand-text);
+}
+.brand-icon {
+  background: linear-gradient(
+    160deg,
+    var(--brand-accent-hover),
+    var(--brand-accent)
+  );
+  color: #fff7f7;
+  border-radius: 8px;
+  letter-spacing: -3px;
+}
+.brand-dot,
+.status-dot {
+  color: var(--brand-accent);
+}
+.brand-dot {
+  color: var(--brand-accent);
+}
+.workspace-label,
+.sidebar-note,
+.user-card small {
+  color: var(--brand-muted);
+}
+.tab {
+  color: #b4c2cd;
+}
+.tab.active,
+.tab:hover {
+  color: var(--brand-text);
+  background: var(--brand-elevated);
+}
+.status-dot {
+  background: var(--brand-success);
+}
+.user-card {
+  border-color: var(--brand-border);
+}
+.avatar {
+  background: var(--brand-elevated);
+  color: var(--brand-accent);
+}
+.workspace {
+  background: var(--brand-bg);
+}
+.workspace > header {
+  background: rgba(9, 10, 13, 0.94);
+  border-color: var(--brand-border);
+  color: var(--brand-text);
+}
+.breadcrumb,
+.slash,
+.top-tag,
+.top-tag span {
+  color: var(--brand-muted);
+}
+main {
+  color: var(--brand-text);
+}
+.panel,
+.stat,
+.card,
+.job-card,
+.source-row,
+.app-row,
+.scan-row,
+.career-section,
+.career-entry,
+.ai-workflow > div,
+.ai-history-row,
+.package-actions,
+.studio-editor,
+.writing-empty,
+.desc,
+.empty,
+.ai-activity {
+  background-color: var(--brand-surface);
+  color: var(--brand-text);
+  border-color: var(--brand-border);
+}
+.stat,
+.card,
+.job-card,
+.source-row,
+.app-row,
+.scan-row,
+.career-section,
+.career-entry,
+.ai-workflow > div,
+.ai-history-row,
+.package-actions,
+.studio-editor,
+.writing-empty,
+.desc,
+.empty,
+.toolbar,
+.result-controls,
+.studio-settings,
+.scan-strip,
+.model-card {
+  border-radius: 9px;
+}
+.toolbar,
+.result-controls,
+.studio-settings,
+.scan-strip,
+.studio-status,
+.tag,
+.chip,
+.notice,
+.section-heading h2 span,
+.task-status,
+.company-icon {
+  background-color: var(--brand-elevated);
+  color: var(--brand-muted);
+  border-color: var(--brand-border);
+}
+.page-heading p,
+.job-insight,
+.fit-grid ul,
+.scan-copy span,
+.job-meta,
+.source-name,
+.job-bottom > span,
+.muted {
+  color: var(--brand-muted);
+}
+.primary,
+.button,
+.profile-form button {
+  background: var(--brand-accent);
+  color: #fff7f7;
+}
+.primary:hover {
+  background: var(--brand-accent-hover);
+}
+.secondary {
+  background: var(--brand-elevated);
+  color: var(--brand-text);
+  border-color: var(--brand-border);
+}
+.secondary:hover,
+.job-card:hover {
+  background: var(--brand-elevated);
+  border-color: var(--brand-accent);
+}
+input,
+select,
+textarea,
+.draft-block textarea {
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  border-color: var(--brand-border);
+}
+input::placeholder,
+textarea::placeholder {
+  color: #758797;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px #f0445226;
+}
+.company-icon {
+  color: var(--brand-accent);
+}
+.match {
+  color: var(--brand-accent);
+  background: #32171c;
+  border-color: #6b2a34;
+}
+.match.low,
+.application-state.unknown {
+  color: var(--brand-warning);
+  background: #332b16;
+  border-color: #62532c;
+}
+.application-state.open {
+  color: var(--brand-success);
+  background: #123322;
+  border-color: #285b42;
+}
+.application-state.closed,
+.application-state.expired {
+  color: var(--brand-critical);
+  background: #35181d;
+  border-color: #64323a;
+}
+.source-error,
+.bad,
+.remove-entry {
+  color: var(--brand-critical);
+}
+.good,
+.green {
+  color: var(--brand-success);
+}
+.fit-grid ul,
+.evidence-note {
+  color: var(--brand-muted);
+}
+.detail-tab {
+  color: var(--brand-muted);
+}
+.detail-tab.active {
+  color: var(--brand-accent);
+  border-color: var(--brand-accent);
+}
+.studio-status {
+  color: var(--brand-accent);
+}
+.draft-block textarea,
+.desc,
+.app-content {
+  background: var(--brand-bg);
+  color: var(--brand-text);
+}
+.writing-mark {
+  color: var(--brand-accent);
+  background: var(--brand-elevated);
+  border-color: var(--brand-border);
+}
+.task-status {
+  background: var(--brand-elevated);
+  color: var(--brand-muted);
+}
+.task-status.succeeded {
+  background: #123322;
+  color: var(--brand-success);
+}
+.task-status.failed {
+  background: #35181d;
+  color: var(--brand-critical);
+}
+.task-status.running {
+  background: #142b3c;
+  color: var(--brand-info);
+}
+.model-card {
+  background: linear-gradient(120deg, #211419, #35191f);
+}
+.model-card .eyebrow,
+.model-orb.ready {
+  color: var(--brand-accent-hover);
+}
+.model-orb {
+  border-color: #ffffff2b;
+  background: #ffffff0b;
+}
+.career-entry input,
+.career-entry textarea {
+  background: var(--brand-bg);
+}
+#toast {
+  background: #32171c;
+  color: var(--brand-text);
+  border: 1px solid #6b2a34;
+}
+footer {
+  color: var(--brand-muted);
+}
+.eyebrow,
+.workspace-label,
+.top-tag,
+.breadcrumb,
+.source-name,
+.job-meta,
+.stat-label,
+.stat-note,
+.match,
+.chip,
+.tag,
+.task-status,
+.application-state {
+  font-family: var(--brand-mono);
+}
+/* Brand mark and polished, high-contrast workspace surfaces. */
+.brand {
+  gap: 0;
+  width: fit-content;
+}
+.brand-logo {
+  display: block;
+  width: 205px;
+  height: 46px;
+}
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tab span {
+  width: 22px;
+  text-align: center;
+  color: var(--brand-accent);
+}
+.sidebar-note {
+  border-top: 1px solid var(--brand-border);
+}
+.sidebar-note p {
+  color: var(--brand-muted);
+}
+.workspace,
+body {
+  background: var(--brand-bg);
+}
+.sidebar {
+  background: var(--brand-surface);
+}
+header {
+  background: rgba(9, 10, 13, 0.94);
+  backdrop-filter: blur(16px);
+}
+.page-heading h1 {
+  max-width: 760px;
+  letter-spacing: -1.5px;
+}
+.page-heading h1 span {
+  color: var(--brand-accent);
+}
+.panel {
+  background: transparent;
+  animation: panel-enter 0.24s ease-out both;
+}
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.career-section,
+.career-entry {
+  background: var(--brand-surface);
+  border-color: var(--brand-border);
+}
+.career-entry input,
+.career-entry textarea {
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  border-color: var(--brand-border);
+}
+.career-section h3,
+.career-entry label,
+.profile-form label {
+  color: var(--brand-text);
+}
+.toolbar input,
+.toolbar select,
+.result-controls select,
+.profile-form input,
+.profile-form select,
+.profile-form textarea,
+.form-card input,
+.form-card select,
+.form-card textarea,
+.studio-editor textarea,
+.draft-block textarea {
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  border: 1px solid var(--brand-border);
+  border-radius: 7px;
+}
+.toolbar input::placeholder,
+.profile-form input::placeholder,
+textarea::placeholder {
+  color: #708394;
+}
+.job-card,
+.card,
+.stat,
+.source-row,
+.app-row,
+.scan-row,
+.career-section,
+.career-entry {
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.12);
+}
+.job-card:hover,
+.source-row:hover,
+.app-row:hover {
+  border-color: var(--brand-accent);
+}
+.job-card,
+.source-row,
+.app-row {
+  transition:
+    border-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.primary {
+  box-shadow: 0 5px 18px rgba(240, 68, 82, 0.13);
+}
+.tag {
+  color: var(--brand-accent);
+}
+.job-grid .empty,
+.empty {
+  color: var(--brand-muted);
+}
+.career-section .section-heading {
+  border-bottom-color: var(--brand-border);
+}
+::selection {
+  background: rgba(240, 68, 82, 0.28);
+  color: var(--brand-text);
+}
+@media (max-width: 760px) {
+  .brand-logo {
+    width: 175px;
+    height: 40px;
+  }
+}
+
+/* Keep discovery on one canvas; only individual cards are elevated. */
+.job-grid {
+  background: transparent;
+}
+.job-bottom {
+  border-top-color: var(--brand-border);
+}
+.job-card:hover {
+  background: var(--brand-surface);
+}
+dialog {
+  background: var(--brand-surface);
+  padding-top: 56px;
+}
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
+dialog .close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  padding: 0;
+  right: 14px;
+  top: 12px;
+  border: 1px solid var(--brand-border);
+  border-radius: 8px;
+  background: var(--brand-elevated);
+  color: var(--brand-text);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  box-shadow: none;
+  cursor: pointer;
+}
+dialog .close:hover {
+  color: var(--brand-accent-hover);
+  border-color: var(--brand-accent);
+}
+.detail-header .actions {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.detail-header .actions > .match,
+.detail-header .actions > .chip,
+.detail-header .actions > .secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  margin: 0;
+  padding: 8px 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+.fit-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.fit-grid > .card,
+#job-detail {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 760px) {
+  .fit-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .sidebar {
+    background: linear-gradient(160deg, #111318, #090a0d);
+  }
+}

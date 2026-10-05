@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 56" role="img" aria-labelledby="title">
+  <title id="title">JobForge</title>
+  <defs><linearGradient id="g" x1="6" y1="4" x2="48" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#ff6670"/><stop offset="1" stop-color="#d72e3d"/></linearGradient></defs>
+  <rect x="2" y="2" width="52" height="52" rx="16" fill="#111318" stroke="#2b3039" stroke-width="1.5"/>
+  <path d="M35 12H24a7 7 0 0 0-7 7v13a7 7 0 0 0 7 7h3v-7h-3V19h11v7h7v-7a7 7 0 0 0-7-7Z" fill="url(#g)"/>
+  <path d="M27 25h19v10a4 4 0 0 1-4 4H27V25Z" fill="none" stroke="#f0f1f3" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="m32 31 3 3 6-7" fill="none" stroke="#f04452" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="66" y="35" fill="#f0f1f3" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="-1.1">JobForge</text>
+  <circle cx="193" cy="29" r="3" fill="#f04452"/>
+</svg>

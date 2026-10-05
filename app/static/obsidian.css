@@ -1,0 +1,114 @@
+/* Obsidian Signal: canonical shared tokens and interaction components. */
+:root {
+  --brand-bg: #090a0d;
+  --brand-surface: #111318;
+  --brand-elevated: #191c22;
+  --brand-border: #2b3039;
+  --brand-text: #f0f1f3;
+  --brand-muted: #9a9faa;
+  --brand-accent: #f04452;
+  --brand-accent-hover: #ff6670;
+  --brand-info: #8abcf0;
+  --brand-warning: #e9bd62;
+  --brand-critical: #f1777d;
+  --brand-success: #65d39b;
+  --brand-sans: Inter, "Segoe UI", system-ui, sans-serif;
+  --brand-mono: "IBM Plex Mono", Consolas, monospace;
+}
+body {
+  font-family: var(--brand-sans);
+}
+body {
+  background-color: var(--bg, var(--brand-bg));
+}
+.primary,
+.upload-actions button[type="submit"],
+.create-case-form button,
+.ai-analysis-content button {
+  background: var(--brand-accent);
+  color: #090a0d;
+  font-weight: 700;
+}
+.primary:hover {
+  background: var(--brand-accent-hover);
+}
+.panel,
+.card {
+  border-radius: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--brand-border);
+}
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.form-section label {
+  display: block;
+  margin: 12px 0;
+}
+.form-section input,
+.form-section textarea,
+.form-section select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  border: 1px solid var(--brand-border);
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+.primary,
+.secondary,
+.secondary-button {
+  border-radius: 8px;
+}
+input,
+select,
+textarea {
+  border-radius: 7px;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--brand-accent-hover);
+  outline-offset: 3px;
+}
+img.brand-mark {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  object-fit: contain;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+}
+.brand-copy small {
+  color: var(--brand-muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
